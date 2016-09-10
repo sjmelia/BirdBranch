@@ -1,5 +1,16 @@
 {
+  "title": "BirdBranch",
+  "authors": [ "Steve Melia" ],
+  "description": "dotnetcore logging for Twitter using Microsoft.Extensions.Logging",
   "version": "1.0.0-*",
+  "packOptions": {
+    "repository": { "url": "https://github.com/sjmelia/BirdBranch" },
+    "licenseUrl": "https://opensource.org/licenses/MIT",
+    "requireLicenseAcceptance": false,
+    "owners": [ "Steve Melia" ],
+    "tags": [ "dotnetcore", "logging", "twitter" ],
+    "summary": "dotnetcore logging for Twitter using Microsoft.Extensions.Logging"
+  },
 
   "dependencies": {
     "Microsoft.Extensions.Logging": "1.0.0",
