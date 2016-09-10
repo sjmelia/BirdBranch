@@ -1,5 +1,6 @@
 Bird Branch - dotnetcore logger for Twitter
 ===========================================
++[![nuget][https://img.shields.io/badge/nuget-v5.3.0-blue.svg]][https://www.nuget.org/packages/ArrayOfBytes.BirdBranch/1.0.0]
 
 Who would do this?
 ------------------
