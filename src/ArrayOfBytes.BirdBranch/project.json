@@ -4,7 +4,7 @@
   "description": "dotnetcore logging for Twitter using Microsoft.Extensions.Logging",
   "version": "1.0.1-*",
   "packOptions": {
-    "projectUrl": "https: //github.com/sjmelia/BirdBranch",
+    "projectUrl": "https://github.com/sjmelia/BirdBranch",
     "repository": { "url": "https://github.com/sjmelia/BirdBranch" },
     "licenseUrl": "https://opensource.org/licenses/MIT",
     "requireLicenseAcceptance": false,
