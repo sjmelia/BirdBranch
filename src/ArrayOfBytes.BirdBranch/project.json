@@ -21,7 +21,7 @@
       "version": "1.0.0",
       "type": "build"
     },
-    "ArrayOfBytes.TeensyTwitter": "1.0.0",
+    "ArrayOfBytes.TeensyTwitter": "1.0.1",
     "Microsoft.Extensions.Logging": "1.0.0",
     "NETStandard.Library": "1.6.0"
   },

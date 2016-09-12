@@ -10,16 +10,33 @@ Yes, it's a bit crazy; but useful for infrequently logging stuff to an easily ac
 To use
 ------
 Set yourself up a Twitter app to get the various keys; then, for the default asp.net core template;
-add a `using ArrayOfBytes.BirdBranch` to get the extension methods and add the following in the
-`Configure` method of `Startup.cs` to log straight into your account's timeline:
 
-`loggerFactory.AddTwitterStatus(new ArrayOfBytes.BirdBranch.OAuthInfo()
-            {
-                ConsumerKey = "<consumer key>",
-                ConsumerSecret = "<consumer secret>",
-                AccessToken = "<access token>",
-                AccessSecret = "<access secret>"
-            });`
+In your `Startup.cs`:
+``` C#
+using ArrayOfBytes.BirdBranch;
+using ArrayOfBytes.OAuth.Client;
 
+...
+
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+{
+	// ... other service configuration.
+
+	// Add a Twitter status logger, including an (optional) filter so that only messages
+	// with the "TwitterCategory" category are sent. (Reducing amount of logging)
+	loggerFactory.AddTwitterStatus(new OAuthConfig()
+				{
+					ConsumerKey = "<consumer key>",
+					ConsumerSecret = "<consumer secret>",
+					AccessToken = "<access token>",
+					AccessSecret = "<access secret>"
+	            },
+				(o, ll) => o == "TwitterCategory")
+
+	// ... other service configuration
+}
+```
+
+Getting hold of an `ILoggerFactory` and calling `CreateLogger` will now let you log straight into your timeline. 
 You can also direct message a user from your selected account, using the `AddTwitterDirectMessage` overload.
-Both functions accept a filter as is usual for logging functions.
+Both functions accept a filter as is usual for logging functions - and it's highly advisable to use it!

@@ -3,6 +3,7 @@
     using System;
     using ArrayOfBytes.TeensyTwitter;
     using Microsoft.Extensions.Logging;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Logger for logging messages to Twitter statuses or direct messages.
@@ -90,14 +91,18 @@
 
             message = message.Substring(0, Math.Min(140, message.Length));
 
+            // Ensure no deadlock due to captured continuation context.
+            Task t;
             if (!string.IsNullOrEmpty(this.screenName))
             {
-                this.twitter.NewDirectMessage(this.screenName, message);
+                t = Task.Run(async () => await this.twitter.NewDirectMessage(this.screenName, message).ConfigureAwait(false));
             }
             else
             {
-                this.twitter.UpdateStatus(message);
+                t = Task.Run(async () => await this.twitter.UpdateStatus(message).ConfigureAwait(false));
             }
+
+            t.Wait();
         }
     }
 }
